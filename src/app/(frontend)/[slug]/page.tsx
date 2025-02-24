@@ -55,9 +55,9 @@ export default async function Page({ params: paramsPromise }: Args) {
   })
 
   // Remove this code once your website is seeded
-  if (!page && slug === 'home') {
-    page = homeStatic
-  }
+  // if (!page && slug === 'home') {
+  //   page = homeStatic
+  // }
 
   if (!page) {
     return <PayloadRedirects url={url} />
@@ -72,8 +72,9 @@ export default async function Page({ params: paramsPromise }: Args) {
       <PayloadRedirects disableNotFound url={url} />
 
       {draft && <LivePreviewListener />}
-
-      <RenderHero {...hero} />
+      <main className="pt-[130px]">
+        <RenderHero {...hero} />
+      </main>
       <RenderBlocks blocks={layout} />
     </article>
   )

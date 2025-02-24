@@ -8,12 +8,17 @@ import { ContentBlock } from '@/blocks/Content/Component'
 import { FormBlock } from '@/blocks/Form/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
 
+// 1. Import your front-end component
+import { ContentWithMediaComponent } from '@/blocks/ContentWithMediaComponent'
+
 const blockComponents = {
   archive: ArchiveBlock,
   content: ContentBlock,
   cta: CallToActionBlock,
   formBlock: FormBlock,
   mediaBlock: MediaBlock,
+  // 2. Add it to the mapping
+  contentWithMedia: ContentWithMediaComponent,
 }
 
 export const RenderBlocks: React.FC<{
