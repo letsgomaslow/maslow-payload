@@ -21,5 +21,9 @@ export const RenderHero: React.FC<Page['hero']> = (props) => {
 
   if (!HeroToRender) return null
 
-  return <HeroToRender {...props} />
+  return (
+    <div className="flex flex-col items-center justify-center w-full text-center">
+      <HeroToRender {...props} />
+    </div>
+  )
 }

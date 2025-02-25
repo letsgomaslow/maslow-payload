@@ -64,6 +64,7 @@ export interface Config {
   auth: {
     users: UserAuthOperations;
   };
+  blocks: {};
   collections: {
     pages: Page;
     posts: Post;
@@ -196,7 +197,7 @@ export interface Page {
     | ArchiveBlock
     | FormBlock
     | {
-        content?: {
+        content: {
           root: {
             type: string;
             children: {
@@ -210,9 +211,23 @@ export interface Page {
             version: number;
           };
           [k: string]: unknown;
-        } | null;
-        image?: (string | null) | Media;
+        };
+        image: string | Media;
         textPosition?: ('Left' | 'Right') | null;
+        title: string;
+        /**
+         * Define gradient colors for the title (e.g., ["#FF6B9A", "#76C7C0"])
+         */
+        titleGradient?:
+          | {
+              [k: string]: unknown;
+            }
+          | unknown[]
+          | string
+          | number
+          | boolean
+          | null;
+        showGradientLine?: boolean | null;
         id?: string | null;
         blockName?: string | null;
         blockType: 'contentWithMedia';
@@ -1048,6 +1063,9 @@ export interface PagesSelect<T extends boolean = true> {
               content?: T;
               image?: T;
               textPosition?: T;
+              title?: T;
+              titleGradient?: T;
+              showGradientLine?: T;
               id?: T;
               blockName?: T;
             };
