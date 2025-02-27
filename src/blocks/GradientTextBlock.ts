@@ -1,3 +1,4 @@
+// Payload CMS Block
 import type { Block } from 'payload';
 
 export const GradientTextBlock: Block = {
@@ -10,7 +11,13 @@ export const GradientTextBlock: Block = {
     {
       name: 'text',
       type: 'text',
-      label: 'Text',
+      label: 'Full Text',
+      required: true,
+    },
+    {
+      name: 'gradientText',
+      type: 'text',
+      label: 'Text with Gradient',
       required: true,
     },
     {

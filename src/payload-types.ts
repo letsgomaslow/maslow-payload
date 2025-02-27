@@ -234,6 +234,7 @@ export interface Page {
       }
     | {
         text: string;
+        gradientText: string;
         /**
          * Fixed gradient start color.
          */
@@ -1087,6 +1088,7 @@ export interface PagesSelect<T extends boolean = true> {
           | T
           | {
               text?: T;
+              gradientText?: T;
               gradientFrom?: T;
               gradientTo?: T;
               id?: T;

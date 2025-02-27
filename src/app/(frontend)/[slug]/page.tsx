@@ -72,7 +72,7 @@ export default async function Page({ params: paramsPromise }: Args) {
       <PayloadRedirects disableNotFound url={url} />
 
       {draft && <LivePreviewListener />}
-      <main className={slug === "resources" ? "" : "pt-[130px]"}>
+      <main className={slug === "resources" ? "" : "pt-[0px]"}>
         <RenderHero {...hero} />
       </main>
       <RenderBlocks blocks={layout} />
