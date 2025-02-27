@@ -117,7 +117,7 @@ export const ContentWithMediaComponent: React.FC<ContentWithMediaProps> = ({
     <section
       style={{
         // Added left/right margin here
-        margin: '0 10rem',
+        // margin: '0 10rem',
         // Also add top/bottom padding
         padding: '5rem 0',
         display: 'grid',

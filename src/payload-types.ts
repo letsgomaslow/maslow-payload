@@ -232,6 +232,20 @@ export interface Page {
         blockName?: string | null;
         blockType: 'contentWithMedia';
       }
+    | {
+        text: string;
+        /**
+         * Fixed gradient start color.
+         */
+        gradientFrom?: string | null;
+        /**
+         * Fixed gradient end color.
+         */
+        gradientTo?: string | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'gradientText';
+      }
   )[];
   meta?: {
     title?: string | null;
@@ -1066,6 +1080,15 @@ export interface PagesSelect<T extends boolean = true> {
               title?: T;
               titleGradient?: T;
               showGradientLine?: T;
+              id?: T;
+              blockName?: T;
+            };
+        gradientText?:
+          | T
+          | {
+              text?: T;
+              gradientFrom?: T;
+              gradientTo?: T;
               id?: T;
               blockName?: T;
             };

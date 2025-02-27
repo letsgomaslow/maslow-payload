@@ -66,13 +66,13 @@ export default async function Page({ params: paramsPromise }: Args) {
   const { hero, layout } = page
 
   return (
-    <article className="pt-16 pb-24">
+    <article className="pt-16 pb-24" style={{margin: '16px 125px 24px 125px'}}>
       {/* <PageClient /> */}
       {/* Allows redirects for valid pages too */}
       <PayloadRedirects disableNotFound url={url} />
 
       {draft && <LivePreviewListener />}
-      <main className="pt-[130px]">
+      <main className={slug === "resources" ? "" : "pt-[130px]"}>
         <RenderHero {...hero} />
       </main>
       <RenderBlocks blocks={layout} />

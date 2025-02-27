@@ -9,8 +9,20 @@ import { FormBlock } from '@/blocks/Form/Component';
 import { MediaBlock } from '@/blocks/MediaBlock/Component';
 // Correct import path for ContentWithMediaComponent:
 import { ContentWithMediaComponent } from '@/blocks/ContentWithMediaComponent';
-import HeroBlockComponent from './HeroBlock/HeroBlockComponent';
+import GradientTextBlockComponent from './GradientTextBlockComponent';
+import AIInsightCards from './AIInsightCardsComponent';
 
+// const blockComponents: { [key: string]: React.FC<any> } = {
+//   archive: ArchiveBlock,
+//   content: ContentBlock,
+//   cta: CallToActionBlock,
+//   formBlock: FormBlock,
+//   mediaBlock: MediaBlock,
+//   // Make sure the key matches the slug in the block definition
+//   contentWithMedia: ContentWithMediaComponent,
+//   gradientText: GradientTextBlockComponent,
+//   aiInsightCards : AIInsightCards
+// };
 const blockComponents: { [key: string]: React.FC<any> } = {
   archive: ArchiveBlock,
   content: ContentBlock,
@@ -19,8 +31,10 @@ const blockComponents: { [key: string]: React.FC<any> } = {
   mediaBlock: MediaBlock,
   // Make sure the key matches the slug in the block definition
   contentWithMedia: ContentWithMediaComponent,
-  heroblock : HeroBlockComponent,
+  gradientText: GradientTextBlockComponent,
+  aiInsightBlock: AIInsightCards, // Fix: Match the slug in AIInsightBlock.ts
 };
+
 
 export const RenderBlocks: React.FC<{
   blocks: Page['layout'][0][];
@@ -30,28 +44,23 @@ export const RenderBlocks: React.FC<{
   if (hasBlocks) {
     return (
       <Fragment>
-        {blocks.map((block, index) => {
-            console.log(`Block ${index} data:`, block);
+      {blocks.map((block, index) => {
+  console.log(`Block ${index} data:`, block);
 
-          // Payload returns _blockType; if not, try block.blockType
-          const blockType = block.blockType as string;
-          if (blockType && blockType in blockComponents) {
-            const Block = blockComponents[blockType];
-            if (Block) {
-              // Check if your block data has fields nested under "fields"
-              // If so, you may want to pass {...block.fields} instead.
-              return (
-                <div className="my-16" key={index}>
-                  {/* If the data is nested under fields, you can do:
-                      <Block {...block.fields} disableInnerContainer />
-                      Otherwise, as below: */}
-                  <Block {...block} disableInnerContainer />
-                </div>
-              );
-            }
-          }
-          return null;
-        })}
+  const blockType = block.blockType as string;
+  if (blockType && blockType in blockComponents) {
+    const Block = blockComponents[blockType];
+    if (Block) {
+      return (
+        <div  key={index}>
+<Block {...(block.hasOwnProperty('fields') ? (block as any).fields : block)} disableInnerContainer />
+</div>
+      );
+    }
+  }
+  return null;
+})}
+
       </Fragment>
     );
   }
