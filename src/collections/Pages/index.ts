@@ -22,6 +22,8 @@ import {
   OverviewField,
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
+import { CenterTextBlock } from '@/blocks/CenterTextBlock'
+import { AIInsightCardsBlock } from '@/blocks/AIInsightCards'
 
 
 export const Pages: CollectionConfig<'pages'> = {
@@ -78,7 +80,7 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock,ContentWithMedia,GradientTextBlock],
+              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock,ContentWithMedia,GradientTextBlock, CenterTextBlock,AIInsightCardsBlock],
               required: true,
               admin: {
                 initCollapsed: true,

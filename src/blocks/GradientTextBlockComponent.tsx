@@ -45,7 +45,7 @@ const GradientTextBlockComponent: React.FC<GradientTextBlockProps> = ({
   // Debugging: Log parts array to check how text is split
   console.log("Split Parts:", parts);
 
-  return (
+  return ( 
     <section className="gradient-text-block py-8 text-center" style={{ margin: '0 105px' }}>
       <h2 className="text-6xl font-bold">
         {parts.map((part, index) =>

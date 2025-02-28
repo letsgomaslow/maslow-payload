@@ -70,7 +70,7 @@ export default async function Page({ params: paramsPromise }: Args) {
       {/* <PageClient /> */}
       {/* Allows redirects for valid pages too */}
       <PayloadRedirects disableNotFound url={url} />
-
+ 
       {draft && <LivePreviewListener />}
       <main className={slug === "resources" ? "" : "pt-[0px]"}>
         <RenderHero {...hero} />

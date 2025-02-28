@@ -11,6 +11,8 @@ import { MediaBlock } from '@/blocks/MediaBlock/Component';
 import { ContentWithMediaComponent } from '@/blocks/ContentWithMediaComponent';
 import GradientTextBlockComponent from './GradientTextBlockComponent';
 import AIInsightCards from './AIInsightCardsComponent';
+import CenterTextComponent from './CenterTextBlockProps';
+import AIInsightCardComponents from './AIInsightCardsComponent';
 
 // const blockComponents: { [key: string]: React.FC<any> } = {
 //   archive: ArchiveBlock,
@@ -32,7 +34,8 @@ const blockComponents: { [key: string]: React.FC<any> } = {
   // Make sure the key matches the slug in the block definition
   contentWithMedia: ContentWithMediaComponent,
   gradientText: GradientTextBlockComponent,
-  aiInsightBlock: AIInsightCards, // Fix: Match the slug in AIInsightBlock.ts
+  centerTextBlock: CenterTextComponent,
+  aiInsightCardsBlock : AIInsightCardComponents
 };
 
 

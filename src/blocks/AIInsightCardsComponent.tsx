@@ -1,33 +1,31 @@
-"use client"; // Ensure this component runs in the client
+"use client";
 
 import React from "react";
 
 type CardProps = {
   title: string;
   description: string;
-  imageUrl: string;
-  iconUrl: string;
+  imageUrl?: { url: string }; // Fix: Payload stores media as an object
 };
 
-class AIInsightCard extends React.Component<CardProps> {
-  override render() {
-    const { title, description, imageUrl, iconUrl } = this.props;
-    return (
-      <div className="bg-dark rounded-xl p-4 shadow-lg text-white max-w-sm">
-        <div className="relative">
-          <img src={imageUrl} alt={title} className="w-full rounded-t-lg" />
-          <div className="absolute top-4 left-4 bg-black p-2 rounded-lg">
-            <img src={iconUrl} alt="Icon" className="w-6 h-6" />
-          </div>
+const AIInsightCard: React.FC<CardProps> = ({ title, description, iconUrl }) => {
+  return (
+    <div className="bg-[#0D0F1A] border border-gray-700 rounded-2xl p-6 shadow-lg text-white w-80 transition-all hover:border-pink-500 flex flex-col justify-between h-full">
+      {/* Optional Image - Check if imageUrl exists and has a URL */}
+      {iconUrl?.url && (
+        <div className="mb-4">
+          <img src={iconUrl?.url } alt="Card Image" className=" rounded-lg" height={50} width={50} />
         </div>
-        <div className="p-4">
-          <h3 className="text-lg font-bold">{title}</h3>
-          <p className="text-sm text-gray-300">{description}</p>
-        </div>
+       )} 
+
+      {/* Card Content */}
+      <div className="flex flex-col flex-grow">
+        <h3 className="text-lg font-semibold mb-2">{title}</h3>
+        <p className="text-sm text-gray-400">{description}</p>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 type AIInsightCardsProps = {
   cards: CardProps[];
@@ -35,7 +33,7 @@ type AIInsightCardsProps = {
 
 const AIInsightCardComponents: React.FC<AIInsightCardsProps> = ({ cards }) => {
   return (
-    <div className="flex gap-6 flex-wrap justify-center">
+    <div className="grid grid-cols-3 gap-6 mx-[60px] mt-[50px]">
       {cards.map((card, index) => (
         <AIInsightCard key={index} {...card} />
       ))}

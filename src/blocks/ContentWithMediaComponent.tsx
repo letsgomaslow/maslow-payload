@@ -119,7 +119,6 @@ export const ContentWithMediaComponent: React.FC<ContentWithMediaProps> = ({
         // Added left/right margin here
         // margin: '0 10rem',
         // Also add top/bottom padding
-        margin: '0 105px', // This sets the left and right margins
         padding: '5rem 0',
         display: 'grid',
         gridTemplateColumns: 'repeat(2, 1fr)',

@@ -247,6 +247,25 @@ export interface Page {
         blockName?: string | null;
         blockType: 'gradientText';
       }
+    | {
+        title: string;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'centerTextBlock';
+      }
+    | {
+        cards?:
+          | {
+              title: string;
+              description: string;
+              iconUrl: string | Media;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'aiInsightCardsBlock';
+      }
   )[];
   meta?: {
     title?: string | null;
@@ -1091,6 +1110,27 @@ export interface PagesSelect<T extends boolean = true> {
               gradientText?: T;
               gradientFrom?: T;
               gradientTo?: T;
+              id?: T;
+              blockName?: T;
+            };
+        centerTextBlock?:
+          | T
+          | {
+              title?: T;
+              id?: T;
+              blockName?: T;
+            };
+        aiInsightCardsBlock?:
+          | T
+          | {
+              cards?:
+                | T
+                | {
+                    title?: T;
+                    description?: T;
+                    iconUrl?: T;
+                    id?: T;
+                  };
               id?: T;
               blockName?: T;
             };
