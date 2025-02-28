@@ -46,7 +46,7 @@ const GradientTextBlockComponent: React.FC<GradientTextBlockProps> = ({
   console.log("Split Parts:", parts);
 
   return (
-    <section className="gradient-text-block py-8 text-center">
+    <section className="gradient-text-block py-8 text-center" style={{ margin: '0 105px' }}>
       <h2 className="text-6xl font-bold">
         {parts.map((part, index) =>
           part.toLowerCase().trim() === gradientText.toLowerCase().trim() ? (

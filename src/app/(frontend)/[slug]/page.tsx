@@ -66,7 +66,7 @@ export default async function Page({ params: paramsPromise }: Args) {
   const { hero, layout } = page
 
   return (
-    <article className="pt-16 pb-24" style={{margin: '16px 125px 24px 125px'}}>
+    <article className="pt-16 pb-24" style={{margin: '16px 130px 24px 130px'}}>
       {/* <PageClient /> */}
       {/* Allows redirects for valid pages too */}
       <PayloadRedirects disableNotFound url={url} />
