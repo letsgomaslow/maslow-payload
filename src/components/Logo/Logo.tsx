@@ -1,5 +1,8 @@
+'use client'
+
 import clsx from 'clsx'
 import React from 'react'
+import { useTheme } from '@/providers/Theme'
 
 interface Props {
   className?: string
@@ -9,22 +12,25 @@ interface Props {
 
 export const Logo = (props: Props) => {
   const { loading: loadingFromProps, priority: priorityFromProps, className } = props
-
+  const { theme } = useTheme() 
   const loading = loadingFromProps || 'lazy'
   const priority = priorityFromProps || 'low'
 
+  const logoSrc =
+    theme === 'dark'
+      ? '/media/maslow-logo.png' 
+      : '/media/Maslow-black.png' 
+
   return (
-    /* eslint-disable @next/next/no-img-element */
     <img
-      alt="Payload Logo"
-      width={193}
+      alt="Maslow Logo"
+      width={210}
       height={34}
       loading={loading}
       fetchPriority={priority}
       decoding="async"
-      // className={clsx('max-w-[10.375rem] w-full h-[34px]', className)}
-      src="/media/maslow-logo.png" // Updated to use local image
-      // src="https://raw.githubusercontent.com/payloadcms/payload/main/packages/ui/src/assets/payload-logo-light.svg"
+      className={clsx('max-w-[10.375rem] w-full h-[34px]', className)}
+      src={logoSrc}
     />
   )
 }

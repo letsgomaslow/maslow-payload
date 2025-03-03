@@ -21,7 +21,7 @@ const GradientTextBlockComponent: React.FC<GradientTextBlockProps> = ({
   };
 
   const normalStyle: React.CSSProperties = {
-    color: 'white',
+    color: 'var(--foreground)', // Use the theme's foreground color
     display: 'inline',
   };
 

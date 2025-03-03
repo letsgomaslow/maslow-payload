@@ -17,8 +17,8 @@ const CenterTextComponent: React.FC<CenterTextBlockProps> = ({
     <div className="w-full flex justify-center">
 
 
-    <div className={`flex justify-center items-center w-[700px]`}>
-      <h2 className={`${textSize} ${isBold ? "font-bold" : "font-normal"} text-${textAlign}`}>
+    <div className={`flex justify-center items-center w-[800px]`}>
+      <h2 className={`${textSize} ${isBold ? "font-bold" : "font-normal"} text-${textAlign}  text-[rgb(112,127,147)] dark:text-[rgb(112,127,147)]`}>
         {title}
       </h2>
     </div>
