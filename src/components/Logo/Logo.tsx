@@ -24,7 +24,6 @@ export const Logo = (props: Props) => {
   return (
     <img
       alt="Maslow Logo"
-      width={210}
       height={34}
       loading={loading}
       fetchPriority={priority}
