@@ -13,6 +13,7 @@ import GradientTextBlockComponent from './GradientTextBlockComponent';
 import AIInsightCards from './AIInsightCardsComponent';
 import CenterTextComponent from './CenterTextBlockProps';
 import AIInsightCardComponents from './AIInsightCardsComponent';
+import AnimatedTextBlockComponent from './AnimatedTextBlockComponent';
 
 // const blockComponents: { [key: string]: React.FC<any> } = {
 //   archive: ArchiveBlock,
@@ -35,7 +36,8 @@ const blockComponents: { [key: string]: React.FC<any> } = {
   contentWithMedia: ContentWithMediaComponent,
   gradientText: GradientTextBlockComponent,
   centerTextBlock: CenterTextComponent,
-  aiInsightCardsBlock : AIInsightCardComponents
+  aiInsightCardsBlock : AIInsightCardComponents,
+  animatedTextBlock : AnimatedTextBlockComponent
 };
 
 

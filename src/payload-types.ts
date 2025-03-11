@@ -234,14 +234,9 @@ export interface Page {
       }
     | {
         text: string;
-        gradientText: string;
-        /**
-         * Fixed gradient start color.
-         */
+        gradientText?: string | null;
+        useGradient?: boolean | null;
         gradientFrom?: string | null;
-        /**
-         * Fixed gradient end color.
-         */
         gradientTo?: string | null;
         id?: string | null;
         blockName?: string | null;
@@ -265,6 +260,46 @@ export interface Page {
         id?: string | null;
         blockName?: string | null;
         blockType: 'aiInsightCardsBlock';
+      }
+    | {
+        blocks?:
+          | (
+              | {
+                  text: string;
+                  gradientText?: string | null;
+                  useGradient?: boolean | null;
+                  gradientFrom?: string | null;
+                  gradientTo?: string | null;
+                  id?: string | null;
+                  blockName?: string | null;
+                  blockType: 'gradientText';
+                }
+              | {
+                  title: string;
+                  id?: string | null;
+                  blockName?: string | null;
+                  blockType: 'centerTextBlock';
+                }
+            )[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'stackBlock';
+      }
+    | {
+        title?: string | null;
+        animatedWords?:
+          | {
+              word: string;
+              id?: string | null;
+            }[]
+          | null;
+        useGradient?: boolean | null;
+        gradientFrom?: string | null;
+        gradientTo?: string | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'animatedTextBlock';
       }
   )[];
   meta?: {
@@ -1108,6 +1143,7 @@ export interface PagesSelect<T extends boolean = true> {
           | {
               text?: T;
               gradientText?: T;
+              useGradient?: T;
               gradientFrom?: T;
               gradientTo?: T;
               id?: T;
@@ -1131,6 +1167,50 @@ export interface PagesSelect<T extends boolean = true> {
                     iconUrl?: T;
                     id?: T;
                   };
+              id?: T;
+              blockName?: T;
+            };
+        stackBlock?:
+          | T
+          | {
+              blocks?:
+                | T
+                | {
+                    gradientText?:
+                      | T
+                      | {
+                          text?: T;
+                          gradientText?: T;
+                          useGradient?: T;
+                          gradientFrom?: T;
+                          gradientTo?: T;
+                          id?: T;
+                          blockName?: T;
+                        };
+                    centerTextBlock?:
+                      | T
+                      | {
+                          title?: T;
+                          id?: T;
+                          blockName?: T;
+                        };
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        animatedTextBlock?:
+          | T
+          | {
+              title?: T;
+              animatedWords?:
+                | T
+                | {
+                    word?: T;
+                    id?: T;
+                  };
+              useGradient?: T;
+              gradientFrom?: T;
+              gradientTo?: T;
               id?: T;
               blockName?: T;
             };

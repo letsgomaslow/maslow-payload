@@ -15,6 +15,7 @@ import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { revalidateDelete, revalidatePage } from './hooks/revalidatePage'
 import { GradientTextBlock } from '@/blocks/GradientTextBlock'
 
+
 import {
   MetaDescriptionField,
   MetaImageField,
@@ -24,6 +25,8 @@ import {
 } from '@payloadcms/plugin-seo/fields'
 import { CenterTextBlock } from '@/blocks/CenterTextBlock'
 import { AIInsightCardsBlock } from '@/blocks/AIInsightCards'
+import { StackBlock } from '@/blocks/StackBlock'
+import AnimatedTextBlock from '@/blocks/animatedTextBlock'
 
 
 export const Pages: CollectionConfig<'pages'> = {
@@ -80,7 +83,7 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock,ContentWithMedia,GradientTextBlock, CenterTextBlock,AIInsightCardsBlock],
+              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock,ContentWithMedia,GradientTextBlock, CenterTextBlock,AIInsightCardsBlock,StackBlock,AnimatedTextBlock],             
               required: true,
               admin: {
                 initCollapsed: true,
