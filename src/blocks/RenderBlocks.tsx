@@ -1,4 +1,3 @@
-// C:\Users\Aakash\Desktop\Payload2\src\blocks\RenderBlocks.tsx
 import React, { Fragment } from 'react';
 import type { Page } from '@/payload-types';
 
@@ -7,39 +6,44 @@ import { CallToActionBlock } from '@/blocks/CallToAction/Component';
 import { ContentBlock } from '@/blocks/Content/Component';
 import { FormBlock } from '@/blocks/Form/Component';
 import { MediaBlock } from '@/blocks/MediaBlock/Component';
-// Correct import path for ContentWithMediaComponent:
 import { ContentWithMediaComponent } from '@/blocks/ContentWithMediaComponent';
 import GradientTextBlockComponent from './GradientTextBlockComponent';
 import AIInsightCards from './AIInsightCardsComponent';
 import CenterTextComponent from './CenterTextBlockProps';
 import AIInsightCardComponents from './AIInsightCardsComponent';
 import AnimatedTextBlockComponent from './AnimatedTextBlockComponent';
+import CaseStudies from './CaseStudiesBlock/CaseStudies';
+import Header from './HeaderBlock/Header';
+import CompanyDescription from './CompanyDescriptionBlock/CompanyDescription';
+import Insights from './InsightsBlock/Insights';
+import Capabilities from './CapabilitiesBlock/Capabilities';
+import MaslowFooter from './MaslowFooterBlock/MaslowFooter';
+import ArticleList from './Article/ArticleList';
 
-// const blockComponents: { [key: string]: React.FC<any> } = {
-//   archive: ArchiveBlock,
-//   content: ContentBlock,
-//   cta: CallToActionBlock,
-//   formBlock: FormBlock,
-//   mediaBlock: MediaBlock,
-//   // Make sure the key matches the slug in the block definition
-//   contentWithMedia: ContentWithMediaComponent,
-//   gradientText: GradientTextBlockComponent,
-//   aiInsightCards : AIInsightCards
-// };
+// Type guard for blocks that have 'fields'
+const hasFields = (block: any): block is { fields: any } => {
+  return 'fields' in block;
+};
+
 const blockComponents: { [key: string]: React.FC<any> } = {
   archive: ArchiveBlock,
   content: ContentBlock,
   cta: CallToActionBlock,
   formBlock: FormBlock,
   mediaBlock: MediaBlock,
-  // Make sure the key matches the slug in the block definition
   contentWithMedia: ContentWithMediaComponent,
   gradientText: GradientTextBlockComponent,
   centerTextBlock: CenterTextComponent,
   aiInsightCardsBlock : AIInsightCardComponents,
-  animatedTextBlock : AnimatedTextBlockComponent
+  animatedTextBlock : AnimatedTextBlockComponent,
+  caseStudies : CaseStudies,
+  headerBlockNew : Header,
+  companyDescription: CompanyDescription,
+  insights : Insights,
+  capabilities : Capabilities,
+  maslowFooter: MaslowFooter,
+  articleList: ArticleList  // Make sure this matches exactly
 };
-
 
 export const RenderBlocks: React.FC<{
   blocks: Page['layout'][0][];
@@ -49,25 +53,35 @@ export const RenderBlocks: React.FC<{
   if (hasBlocks) {
     return (
       <Fragment>
-      {blocks.map((block, index) => {
-  console.log(`Block ${index} data:`, block);
+        {blocks.map((block, index) => {
+          console.log(`Block ${index} data:`, block);
+          console.log(`Block type:`, block.blockType);
 
-  const blockType = block.blockType as string;
-  if (blockType && blockType in blockComponents) {
-    const Block = blockComponents[blockType];
-    if (Block) {
-      return (
-        <div  key={index}>
-<Block {...(block.hasOwnProperty('fields') ? (block as any).fields : block)} disableInnerContainer />
-</div>
-      );
-    }
-  }
-  return null;
-})}
-
+          const blockType = block.blockType as string;
+          if (blockType && blockType in blockComponents) {
+            const Block = blockComponents[blockType];
+            if (Block) {
+              console.log(`Rendering block:`, blockType, block);
+              if (hasFields(block)) {
+                return (
+                  <div key={index}>
+                    <Block {...block} disableInnerContainer />
+                  </div>
+                );
+              } else {
+                return (
+                  <div key={index}>
+                    <Block {...block} disableInnerContainer />
+                  </div>
+                );
+              }
+            }
+          }
+          return null;
+        })}
       </Fragment>
     );
   }
+
   return null;
 };

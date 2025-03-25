@@ -301,6 +301,13 @@ export interface Page {
         blockName?: string | null;
         blockType: 'animatedTextBlock';
       }
+    | CaseStudiesBlock
+    | HeaderBlock
+    | CompanyDescriptionBlock
+    | InsightsBlock
+    | CapabilitiesBlock
+    | MaslowFooterBlock
+    | ArticleListBlock
   )[];
   meta?: {
     title?: string | null;
@@ -838,6 +845,136 @@ export interface Form {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CaseStudiesBlock".
+ */
+export interface CaseStudiesBlock {
+  cases?:
+    | {
+        image: string | Media;
+        title: string;
+        description: string;
+        link?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  viewAllLink?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'caseStudies';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "HeaderBlock".
+ */
+export interface HeaderBlock {
+  logo?: (string | null) | Media;
+  menuItems?:
+    | {
+        label: string;
+        link: string;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'headerBlockNew';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CompanyDescriptionBlock".
+ */
+export interface CompanyDescriptionBlock {
+  description: string;
+  locations?:
+    | {
+        location?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  learnMoreLink?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'companyDescription';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "InsightsBlock".
+ */
+export interface InsightsBlock {
+  posts?:
+    | {
+        date: string;
+        title: string;
+        link?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  morePostsLink?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'insights';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CapabilitiesBlock".
+ */
+export interface CapabilitiesBlock {
+  categories?:
+    | {
+        title: string;
+        items?:
+          | {
+              item: string;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  viewAllLink?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'capabilities';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "MaslowFooterBlock".
+ */
+export interface MaslowFooterBlock {
+  logo?: (string | null) | Media;
+  locations?:
+    | {
+        city: string;
+        address: string;
+        status?: ('open' | 'closed') | null;
+        id?: string | null;
+      }[]
+    | null;
+  copyrightText?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'maslowFooter';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ArticleListBlock".
+ */
+export interface ArticleListBlock {
+  articles?:
+    | {
+        title: string;
+        date: string;
+        link?: string | null;
+        image?: (string | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'articleList';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1214,6 +1351,13 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        caseStudies?: T | CaseStudiesBlockSelect<T>;
+        headerBlockNew?: T | HeaderBlockSelect<T>;
+        companyDescription?: T | CompanyDescriptionBlockSelect<T>;
+        insights?: T | InsightsBlockSelect<T>;
+        capabilities?: T | CapabilitiesBlockSelect<T>;
+        maslowFooter?: T | MaslowFooterBlockSelect<T>;
+        articleList?: T | ArticleListBlockSelect<T>;
       };
   meta?:
     | T
@@ -1310,6 +1454,129 @@ export interface FormBlockSelect<T extends boolean = true> {
   form?: T;
   enableIntro?: T;
   introContent?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CaseStudiesBlock_select".
+ */
+export interface CaseStudiesBlockSelect<T extends boolean = true> {
+  cases?:
+    | T
+    | {
+        image?: T;
+        title?: T;
+        description?: T;
+        link?: T;
+        id?: T;
+      };
+  viewAllLink?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "HeaderBlock_select".
+ */
+export interface HeaderBlockSelect<T extends boolean = true> {
+  logo?: T;
+  menuItems?:
+    | T
+    | {
+        label?: T;
+        link?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CompanyDescriptionBlock_select".
+ */
+export interface CompanyDescriptionBlockSelect<T extends boolean = true> {
+  description?: T;
+  locations?:
+    | T
+    | {
+        location?: T;
+        id?: T;
+      };
+  learnMoreLink?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "InsightsBlock_select".
+ */
+export interface InsightsBlockSelect<T extends boolean = true> {
+  posts?:
+    | T
+    | {
+        date?: T;
+        title?: T;
+        link?: T;
+        id?: T;
+      };
+  morePostsLink?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CapabilitiesBlock_select".
+ */
+export interface CapabilitiesBlockSelect<T extends boolean = true> {
+  categories?:
+    | T
+    | {
+        title?: T;
+        items?:
+          | T
+          | {
+              item?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  viewAllLink?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "MaslowFooterBlock_select".
+ */
+export interface MaslowFooterBlockSelect<T extends boolean = true> {
+  logo?: T;
+  locations?:
+    | T
+    | {
+        city?: T;
+        address?: T;
+        status?: T;
+        id?: T;
+      };
+  copyrightText?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ArticleListBlock_select".
+ */
+export interface ArticleListBlockSelect<T extends boolean = true> {
+  articles?:
+    | T
+    | {
+        title?: T;
+        date?: T;
+        link?: T;
+        image?: T;
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }

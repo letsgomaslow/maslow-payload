@@ -1,0 +1,37 @@
+.companyDescription {
+  background-color: #f5f5f5;
+  padding: 4rem 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.description {
+  font-size: 1rem; 
+  line-height: 1.6; 
+  color: #666;
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.locations {
+  margin-bottom: 1.5rem;
+}
+
+.learnMore {
+  color: #E03177; 
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: color 0.2s ease;
+}
+
+.learnMore:hover {
+  color: #b62660;
+}
