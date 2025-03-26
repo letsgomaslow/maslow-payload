@@ -21,11 +21,16 @@ import MaslowFooter from './MaslowFooterBlock/MaslowFooter';
 import { ArticleList } from './Article/ArticleList';
 import { FeaturedArticle } from './FeaturedArticle/FeaturedArticle';
 import { Contact } from './Contact/Contact';
+import { CapabilitiesHero } from './CapabilitiesHeroBlock/CapabilitiesHero';
+import { StrategicBlock } from './StrategicBlock/StrategicBlock';
+import { TechnologyBlock } from './TechnologyBlock/TechnologyBlock';
 
 // Type guard for blocks that have 'fields'
 const hasFields = (block: any): block is { fields: any } => {
   return 'fields' in block;
 };
+
+// Add this import near the top with other block imports
 
 const blockComponents: { [key: string]: React.FC<any> } = {
   archive: ArchiveBlock,
@@ -36,17 +41,20 @@ const blockComponents: { [key: string]: React.FC<any> } = {
   contentWithMedia: ContentWithMediaComponent,
   gradientText: GradientTextBlockComponent,
   centerTextBlock: CenterTextComponent,
-  aiInsightCardsBlock : AIInsightCardComponents,
-  animatedTextBlock : AnimatedTextBlockComponent,
-  caseStudies : CaseStudies,
-  headerBlockNew : Header,
+  aiInsightCardsBlock: AIInsightCardComponents,
+  animatedTextBlock: AnimatedTextBlockComponent,
+  caseStudies: CaseStudies,
+  headerBlockNew: Header,
   companyDescription: CompanyDescription,
-  insights : Insights,
-  capabilities : Capabilities,
+  insights: Insights,
+  capabilities: Capabilities,
+  strategic: StrategicBlock, // Add this line
+  capabilitiesHero: CapabilitiesHero,
   maslowFooter: MaslowFooter,
   articleList: ArticleList,
   featuredArticle: FeaturedArticle,
-  contactBlock : Contact
+  contactBlock: Contact,
+  technology: TechnologyBlock, // Add this line
 };
 
 export const RenderBlocks: React.FC<{

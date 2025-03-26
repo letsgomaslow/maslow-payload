@@ -15,7 +15,6 @@ import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { revalidateDelete, revalidatePage } from './hooks/revalidatePage'
 import { GradientTextBlock } from '@/blocks/GradientTextBlock'
 import { ContactBlock } from '@/blocks/Contact/config';
-
 import {
   MetaDescriptionField,
   MetaImageField,
@@ -35,6 +34,9 @@ import { CapabilitiesBlock } from '@/blocks/CapabilitiesBlock/config'
 import { MaslowFooterBlock } from '@/blocks/MaslowFooterBlock/config'
 import { ArticleListBlock } from '@/blocks/Article/config'
 import { FeaturedArticleBlock } from '@/blocks/FeaturedArticle/config'
+import { CapabilitiesHeroBlock } from '@/blocks/CapabilitiesHeroBlock/config';
+import { StrategicBlock } from '@/blocks/StrategicBlock/config';
+import { TechnologyBlock } from '@/blocks/TechnologyBlock/config';
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -107,10 +109,13 @@ export const Pages: CollectionConfig<'pages'> = {
                 CompanyDescriptionBlock,
                 InsightsBlock, 
                 CapabilitiesBlock,
+                CapabilitiesHeroBlock,
+                StrategicBlock, 
                 MaslowFooterBlock,
                 ArticleListBlock,
                 FeaturedArticleBlock,
-                ContactBlock  // Add this line
+                ContactBlock,
+                TechnologyBlock, 
               ],
               required: true,
               admin: {

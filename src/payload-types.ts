@@ -306,10 +306,13 @@ export interface Page {
     | CompanyDescriptionBlock
     | InsightsBlock
     | CapabilitiesBlock
+    | CapabilitiesHeroBlock
+    | StrategicBlock
     | MaslowFooterBlock
     | ArticleListBlock
     | FeaturedArticleBlock
     | ContactBlock
+    | TechnologyBlock
   )[];
   meta?: {
     title?: string | null;
@@ -940,6 +943,46 @@ export interface CapabilitiesBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CapabilitiesHeroBlock".
+ */
+export interface CapabilitiesHeroBlock {
+  subtitle: string;
+  backgroundImage: string | Media;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'capabilitiesHero';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "StrategicBlock".
+ */
+export interface StrategicBlock {
+  sectionTitle?: string | null;
+  title?: {
+    strategic?: string | null;
+    execution?: string | null;
+  };
+  description: string;
+  capabilities?: {
+    leftColumn?:
+      | {
+          item?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    rightColumn?:
+      | {
+          item?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'strategic';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "MaslowFooterBlock".
  */
 export interface MaslowFooterBlock {
@@ -1002,6 +1045,35 @@ export interface ContactBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'contactBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TechnologyBlock".
+ */
+export interface TechnologyBlock {
+  description: string;
+  extendedDescription: string;
+  title?: {
+    technology?: string | null;
+    geniuses?: string | null;
+  };
+  capabilities?: {
+    leftColumn?:
+      | {
+          item?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    rightColumn?:
+      | {
+          item?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'technology';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1386,10 +1458,13 @@ export interface PagesSelect<T extends boolean = true> {
         companyDescription?: T | CompanyDescriptionBlockSelect<T>;
         insights?: T | InsightsBlockSelect<T>;
         capabilities?: T | CapabilitiesBlockSelect<T>;
+        capabilitiesHero?: T | CapabilitiesHeroBlockSelect<T>;
+        strategic?: T | StrategicBlockSelect<T>;
         maslowFooter?: T | MaslowFooterBlockSelect<T>;
         articleList?: T | ArticleListBlockSelect<T>;
         featuredArticle?: T | FeaturedArticleBlockSelect<T>;
         contactBlock?: T | ContactBlockSelect<T>;
+        technology?: T | TechnologyBlockSelect<T>;
       };
   meta?:
     | T
@@ -1579,6 +1654,48 @@ export interface CapabilitiesBlockSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CapabilitiesHeroBlock_select".
+ */
+export interface CapabilitiesHeroBlockSelect<T extends boolean = true> {
+  subtitle?: T;
+  backgroundImage?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "StrategicBlock_select".
+ */
+export interface StrategicBlockSelect<T extends boolean = true> {
+  sectionTitle?: T;
+  title?:
+    | T
+    | {
+        strategic?: T;
+        execution?: T;
+      };
+  description?: T;
+  capabilities?:
+    | T
+    | {
+        leftColumn?:
+          | T
+          | {
+              item?: T;
+              id?: T;
+            };
+        rightColumn?:
+          | T
+          | {
+              item?: T;
+              id?: T;
+            };
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "MaslowFooterBlock_select".
  */
 export interface MaslowFooterBlockSelect<T extends boolean = true> {
@@ -1637,6 +1754,38 @@ export interface ContactBlockSelect<T extends boolean = true> {
   heading?: T;
   description?: T;
   minimumProjectValue?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TechnologyBlock_select".
+ */
+export interface TechnologyBlockSelect<T extends boolean = true> {
+  description?: T;
+  extendedDescription?: T;
+  title?:
+    | T
+    | {
+        technology?: T;
+        geniuses?: T;
+      };
+  capabilities?:
+    | T
+    | {
+        leftColumn?:
+          | T
+          | {
+              item?: T;
+              id?: T;
+            };
+        rightColumn?:
+          | T
+          | {
+              item?: T;
+              id?: T;
+            };
+      };
   id?: T;
   blockName?: T;
 }
