@@ -308,6 +308,8 @@ export interface Page {
     | CapabilitiesBlock
     | MaslowFooterBlock
     | ArticleListBlock
+    | FeaturedArticleBlock
+    | ContactBlock
   )[];
   meta?: {
     title?: string | null;
@@ -964,6 +966,8 @@ export interface ArticleListBlock {
     | {
         title: string;
         date: string;
+        author?: string | null;
+        tag?: string | null;
         link?: string | null;
         image?: (string | null) | Media;
         id?: string | null;
@@ -972,6 +976,32 @@ export interface ArticleListBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'articleList';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FeaturedArticleBlock".
+ */
+export interface FeaturedArticleBlock {
+  article: {
+    title: string;
+    link?: string | null;
+    featured?: boolean | null;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'featuredArticle';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContactBlock".
+ */
+export interface ContactBlock {
+  heading: string;
+  description: string;
+  minimumProjectValue: string;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'contactBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1358,6 +1388,8 @@ export interface PagesSelect<T extends boolean = true> {
         capabilities?: T | CapabilitiesBlockSelect<T>;
         maslowFooter?: T | MaslowFooterBlockSelect<T>;
         articleList?: T | ArticleListBlockSelect<T>;
+        featuredArticle?: T | FeaturedArticleBlockSelect<T>;
+        contactBlock?: T | ContactBlockSelect<T>;
       };
   meta?:
     | T
@@ -1573,10 +1605,38 @@ export interface ArticleListBlockSelect<T extends boolean = true> {
     | {
         title?: T;
         date?: T;
+        author?: T;
+        tag?: T;
         link?: T;
         image?: T;
         id?: T;
       };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FeaturedArticleBlock_select".
+ */
+export interface FeaturedArticleBlockSelect<T extends boolean = true> {
+  article?:
+    | T
+    | {
+        title?: T;
+        link?: T;
+        featured?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContactBlock_select".
+ */
+export interface ContactBlockSelect<T extends boolean = true> {
+  heading?: T;
+  description?: T;
+  minimumProjectValue?: T;
   id?: T;
   blockName?: T;
 }

@@ -19,6 +19,14 @@ export const ArticleListBlock: Block = {
           required: true,
         },
         {
+          name: 'author',
+          type: 'text',
+        },
+        {
+          name: 'tag',
+          type: 'text',
+        },
+        {
           name: 'link',
           type: 'text',
         },

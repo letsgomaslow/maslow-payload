@@ -14,6 +14,7 @@ import { populatePublishedAt } from '../../hooks/populatePublishedAt'
 import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { revalidateDelete, revalidatePage } from './hooks/revalidatePage'
 import { GradientTextBlock } from '@/blocks/GradientTextBlock'
+import { ContactBlock } from '@/blocks/Contact/config';
 
 import {
   MetaDescriptionField,
@@ -33,6 +34,7 @@ import { InsightsBlock } from '@/blocks/InsightsBlock/config'
 import { CapabilitiesBlock } from '@/blocks/CapabilitiesBlock/config'
 import { MaslowFooterBlock } from '@/blocks/MaslowFooterBlock/config'
 import { ArticleListBlock } from '@/blocks/Article/config'
+import { FeaturedArticleBlock } from '@/blocks/FeaturedArticle/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -88,7 +90,29 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock,ContentWithMedia,GradientTextBlock, CenterTextBlock,AIInsightCardsBlock,StackBlock,AnimatedTextBlock,CaseStudiesBlock,HeaderBlock,CompanyDescriptionBlock,InsightsBlock, CapabilitiesBlock,MaslowFooterBlock,ArticleListBlock],              required: true,
+              blocks: [
+                CallToAction, 
+                Content, 
+                MediaBlock, 
+                Archive, 
+                FormBlock,
+                ContentWithMedia,
+                GradientTextBlock, 
+                CenterTextBlock,
+                AIInsightCardsBlock,
+                StackBlock,
+                AnimatedTextBlock,
+                CaseStudiesBlock,
+                HeaderBlock,
+                CompanyDescriptionBlock,
+                InsightsBlock, 
+                CapabilitiesBlock,
+                MaslowFooterBlock,
+                ArticleListBlock,
+                FeaturedArticleBlock,
+                ContactBlock  // Add this line
+              ],
+              required: true,
               admin: {
                 initCollapsed: true,
               },

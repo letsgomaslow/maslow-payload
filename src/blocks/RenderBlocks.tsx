@@ -18,7 +18,9 @@ import CompanyDescription from './CompanyDescriptionBlock/CompanyDescription';
 import Insights from './InsightsBlock/Insights';
 import Capabilities from './CapabilitiesBlock/Capabilities';
 import MaslowFooter from './MaslowFooterBlock/MaslowFooter';
-import ArticleList from './Article/ArticleList';
+import { ArticleList } from './Article/ArticleList';
+import { FeaturedArticle } from './FeaturedArticle/FeaturedArticle';
+import { Contact } from './Contact/Contact';
 
 // Type guard for blocks that have 'fields'
 const hasFields = (block: any): block is { fields: any } => {
@@ -42,7 +44,9 @@ const blockComponents: { [key: string]: React.FC<any> } = {
   insights : Insights,
   capabilities : Capabilities,
   maslowFooter: MaslowFooter,
-  articleList: ArticleList  // Make sure this matches exactly
+  articleList: ArticleList,
+  featuredArticle: FeaturedArticle,
+  contactBlock : Contact
 };
 
 export const RenderBlocks: React.FC<{
