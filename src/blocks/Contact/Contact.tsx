@@ -1,7 +1,9 @@
 'use client'
 
-import React from 'react';
+import React, { useState } from 'react';  // Add useState to the import
 import classes from './Contact.module.css';
+import { useRouter } from 'next/navigation'
+import { useForm } from 'react-hook-form'
 
 interface ContactProps {
   heading?: string;
@@ -15,18 +17,43 @@ export const Contact: React.FC<ContactProps> = ({
   description,
   minimumProjectValue = '$25,000',
 }) => {
+  const router = useRouter()
+  const [success, setSuccess] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState('')
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = new FormData(e.currentTarget);
+    setIsLoading(true);
+    setError('');
+    const form = e.target as HTMLFormElement; // Store form reference
+    const formData = new FormData(form);
     
     try {
-      // Add your form submission logic here
-      console.log('Form submitted:', Object.fromEntries(formData));
+      const response = await fetch('/api/form-submit', {
+        method: 'POST',
+        body: JSON.stringify(Object.fromEntries(formData)),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (response.ok) {
+        setSuccess(true);
+        form.reset(); // Use stored form reference
+      } else {
+        const data = await response.json();
+        throw new Error(data.error || 'Form submission failed');
+      }
     } catch (error) {
       console.error('Error submitting form:', error);
+      setError(error instanceof Error ? error.message : 'Failed to submit form');
+    } finally {
+      setIsLoading(false);
     }
-  };
+};
 
+  // In your return statement, update the button and add error message:
   return (
     <div className={classes.contactBlock}>
       <div className={classes.container}>
@@ -90,9 +117,23 @@ export const Contact: React.FC<ContactProps> = ({
                 rows={4}
               ></textarea>
             </div>
-            <button type="submit" className={classes.submitButton}>
-              Submit
+            <button 
+              type="submit" 
+              className={classes.submitButton}
+              disabled={isLoading}
+            >
+              {isLoading ? 'Submitting...' : 'Submit'}
             </button>
+            {error && (
+              <div className={classes.errorMessage}>
+                {error}
+              </div>
+            )}
+            {success && (
+              <div className={classes.successMessage}>
+                Thank you for your message. We'll get back to you soon!
+              </div>
+            )}
           </form>
         </div>
       </div>
