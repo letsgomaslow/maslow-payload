@@ -28,6 +28,12 @@ export const CapabilitiesBlock: Block = {
               required: true,
               label: 'Item',
             },
+            {
+              name: 'url',
+              type: 'text',
+              required: false,
+              label: 'Item URL (Optional)',
+            },
           ],
         },
       ],

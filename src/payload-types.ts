@@ -935,6 +935,7 @@ export interface CapabilitiesBlock {
         items?:
           | {
               item: string;
+              url?: string | null;
               id?: string | null;
             }[]
           | null;
@@ -1770,6 +1771,7 @@ export interface CapabilitiesBlockSelect<T extends boolean = true> {
           | T
           | {
               item?: T;
+              url?: T;
               id?: T;
             };
         id?: T;

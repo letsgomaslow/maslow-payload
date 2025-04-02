@@ -61,8 +61,17 @@
   margin: 0;
 }
 
+.itemText {
+  color: inherit;
+  display: block;
+  width: 100%;
+}
+
+.itemLink:hover {
+  color: #333;
+}
+
 .item {
-  color: #858181;
   margin-bottom: 0.75rem;
   font-size: 0.875rem; 
   transition: color 0.2s ease;
