@@ -8,7 +8,6 @@ import { FormBlock } from '@/blocks/Form/Component';
 import { MediaBlock } from '@/blocks/MediaBlock/Component';
 import { ContentWithMediaComponent } from '@/blocks/ContentWithMediaComponent';
 import GradientTextBlockComponent from './GradientTextBlockComponent';
-import AIInsightCards from './AIInsightCardsComponent';
 import CenterTextComponent from './CenterTextBlockProps';
 import AIInsightCardComponents from './AIInsightCardsComponent';
 import AnimatedTextBlockComponent from './AnimatedTextBlockComponent';
@@ -24,13 +23,17 @@ import { Contact } from './Contact/Contact';
 import { CapabilitiesHero } from './CapabilitiesHeroBlock/CapabilitiesHero';
 import { StrategicBlock } from './StrategicBlock/StrategicBlock';
 import { TechnologyBlock } from './TechnologyBlock/TechnologyBlock';
+import Showcase from './ShowcaseBlock/Showcase';
+import Testimonial from './TestimonialBlock/Testimonial';
+import CaseStudyDetails from './CaseStudyDetailsBlock/CaseStudyDetails';
+import Statistics from './StatisticsBlock/Statistics';
+import CaseStudyDetailsSecond from './CaseStudyDetailsSecondBlock/CaseStudyDetailsSecond';
+
 
 // Type guard for blocks that have 'fields'
 const hasFields = (block: any): block is { fields: any } => {
   return 'fields' in block;
 };
-
-// Add this import near the top with other block imports
 
 const blockComponents: { [key: string]: React.FC<any> } = {
   archive: ArchiveBlock,
@@ -48,13 +51,18 @@ const blockComponents: { [key: string]: React.FC<any> } = {
   companyDescription: CompanyDescription,
   insights: Insights,
   capabilities: Capabilities,
-  strategic: StrategicBlock, // Add this line
+  strategic: StrategicBlock, 
   capabilitiesHero: CapabilitiesHero,
   maslowFooter: MaslowFooter,
   articleList: ArticleList,
   featuredArticle: FeaturedArticle,
   contactBlock: Contact,
-  technology: TechnologyBlock, // Add this line
+  technology: TechnologyBlock, 
+  showcase: Showcase,
+  testimonial: Testimonial,
+  caseStudyDetails: CaseStudyDetails,
+  caseStudyDetailsSecond: CaseStudyDetailsSecond,
+  statistics: Statistics,
 };
 
 export const RenderBlocks: React.FC<{

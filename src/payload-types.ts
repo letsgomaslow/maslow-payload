@@ -311,8 +311,13 @@ export interface Page {
     | MaslowFooterBlock
     | ArticleListBlock
     | FeaturedArticleBlock
+    | StatisticsBlock
     | ContactBlock
+    | TestimonialBlock
     | TechnologyBlock
+    | ShowcaseBlock
+    | CaseStudyDetailsBlock
+    | CaseStudyDetailsSecondBlock
   )[];
   meta?: {
     title?: string | null;
@@ -1036,6 +1041,23 @@ export interface FeaturedArticleBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "StatisticsBlock".
+ */
+export interface StatisticsBlock {
+  title: string;
+  stats: {
+    value: string;
+    label: string;
+    description: string;
+    color: 'teal' | 'purple' | 'yellow';
+    id?: string | null;
+  }[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'statistics';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "ContactBlock".
  */
 export interface ContactBlock {
@@ -1045,6 +1067,25 @@ export interface ContactBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'contactBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TestimonialBlock".
+ */
+export interface TestimonialBlock {
+  testimonial: {
+    /**
+     * Enter the testimonial quote
+     */
+    quote: string;
+    attribution: {
+      name: string;
+      company: string;
+    };
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'testimonial';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1074,6 +1115,86 @@ export interface TechnologyBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'technology';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ShowcaseBlock".
+ */
+export interface ShowcaseBlock {
+  /**
+   * Label for case study
+   */
+  caseStudyLabel?: string | null;
+  /**
+   * Enter the showcase title
+   */
+  title: string;
+  /**
+   * Enter the first paragraph of description
+   */
+  descriptionOne: string;
+  /**
+   * Enter the second paragraph of description
+   */
+  descriptionTwo: string;
+  metadata: {
+    year: {
+      label?: string | null;
+      value: string;
+    };
+    skills: {
+      label?: string | null;
+      items: {
+        skill: string;
+        id?: string | null;
+      }[];
+    };
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'showcase';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CaseStudyDetailsBlock".
+ */
+export interface CaseStudyDetailsBlock {
+  /**
+   * Enter the section title
+   */
+  title: string;
+  /**
+   * Add paragraphs of description
+   */
+  description: {
+    paragraph: string;
+    id?: string | null;
+  }[];
+  /**
+   * Add up to 2 phone mockup images
+   */
+  images: {
+    image: string | Media;
+    id?: string | null;
+  }[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'caseStudyDetails';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CaseStudyDetailsSecondBlock".
+ */
+export interface CaseStudyDetailsSecondBlock {
+  title: string;
+  points: {
+    text: string;
+    id?: string | null;
+  }[];
+  image: string | Media;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'caseStudyDetailsSecond';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1463,8 +1584,13 @@ export interface PagesSelect<T extends boolean = true> {
         maslowFooter?: T | MaslowFooterBlockSelect<T>;
         articleList?: T | ArticleListBlockSelect<T>;
         featuredArticle?: T | FeaturedArticleBlockSelect<T>;
+        statistics?: T | StatisticsBlockSelect<T>;
         contactBlock?: T | ContactBlockSelect<T>;
+        testimonial?: T | TestimonialBlockSelect<T>;
         technology?: T | TechnologyBlockSelect<T>;
+        showcase?: T | ShowcaseBlockSelect<T>;
+        caseStudyDetails?: T | CaseStudyDetailsBlockSelect<T>;
+        caseStudyDetailsSecond?: T | CaseStudyDetailsSecondBlockSelect<T>;
       };
   meta?:
     | T
@@ -1748,12 +1874,49 @@ export interface FeaturedArticleBlockSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "StatisticsBlock_select".
+ */
+export interface StatisticsBlockSelect<T extends boolean = true> {
+  title?: T;
+  stats?:
+    | T
+    | {
+        value?: T;
+        label?: T;
+        description?: T;
+        color?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "ContactBlock_select".
  */
 export interface ContactBlockSelect<T extends boolean = true> {
   heading?: T;
   description?: T;
   minimumProjectValue?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TestimonialBlock_select".
+ */
+export interface TestimonialBlockSelect<T extends boolean = true> {
+  testimonial?:
+    | T
+    | {
+        quote?: T;
+        attribution?:
+          | T
+          | {
+              name?: T;
+              company?: T;
+            };
+      };
   id?: T;
   blockName?: T;
 }
@@ -1786,6 +1949,76 @@ export interface TechnologyBlockSelect<T extends boolean = true> {
               id?: T;
             };
       };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ShowcaseBlock_select".
+ */
+export interface ShowcaseBlockSelect<T extends boolean = true> {
+  caseStudyLabel?: T;
+  title?: T;
+  descriptionOne?: T;
+  descriptionTwo?: T;
+  metadata?:
+    | T
+    | {
+        year?:
+          | T
+          | {
+              label?: T;
+              value?: T;
+            };
+        skills?:
+          | T
+          | {
+              label?: T;
+              items?:
+                | T
+                | {
+                    skill?: T;
+                    id?: T;
+                  };
+            };
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CaseStudyDetailsBlock_select".
+ */
+export interface CaseStudyDetailsBlockSelect<T extends boolean = true> {
+  title?: T;
+  description?:
+    | T
+    | {
+        paragraph?: T;
+        id?: T;
+      };
+  images?:
+    | T
+    | {
+        image?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CaseStudyDetailsSecondBlock_select".
+ */
+export interface CaseStudyDetailsSecondBlockSelect<T extends boolean = true> {
+  title?: T;
+  points?:
+    | T
+    | {
+        text?: T;
+        id?: T;
+      };
+  image?: T;
   id?: T;
   blockName?: T;
 }

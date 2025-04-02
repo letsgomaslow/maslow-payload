@@ -38,7 +38,12 @@ const CaseStudies: React.FC<CaseStudiesProps> = ({
 
       <div className={styles.grid}>
         {cases.map((study, index) => (
-          <div key={index} className={styles.card}>
+          <Link 
+            href={study.link || '#'} 
+            key={index} 
+            className={styles.card}
+            style={{ textDecoration: 'none' }}
+          >
             <div className={styles.imageWrapper}>
               <Image
                 src={study.image.url}
@@ -53,7 +58,7 @@ const CaseStudies: React.FC<CaseStudiesProps> = ({
               <h3 className={styles.cardTitle}>{study.title}</h3>
               <p className={styles.cardDescription}>{study.description}</p>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
       

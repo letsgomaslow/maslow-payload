@@ -1,0 +1,83 @@
+.statisticsContainer {
+    background-color: #1a1f36;
+    padding: 4rem 10rem; 
+  }
+  
+  .content {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .title {
+    color: #ffffff;
+    font-size: 1rem; /* Reduced text size */
+    margin-bottom: 2rem;
+    font-weight: 500;
+  }
+  
+  .statsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem; /* Slightly reduced gap */
+  }
+  
+  .statItem {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .statValue {
+    font-size: 2.5rem; /* Reduced text size */
+    font-weight: 600;
+    line-height: 1.1;
+  }
+  
+  .statLabel {
+    font-size: 1.25rem; /* Reduced text size */
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+  
+  .statDescription {
+    color: #a0aec0;
+    font-size: 0.8125rem; /* Reduced text size */
+    line-height: 1.5;
+    margin: 0;
+  }
+  
+  /* Colors */
+  .teal {
+    color: #4fd1c5;
+  }
+  
+  .purple {
+    color: #b794f4;
+  }
+  
+  .yellow {
+    color: #ffd700;
+  }
+  
+  @media (max-width: 768px) {
+    .statsGrid {
+      grid-template-columns: 1fr;
+      gap: 2rem; /* Adjusted for spacing */
+    }
+  
+    .statisticsContainer {
+      padding: 3rem 2rem; /* Adjusted horizontal padding */
+    }
+  
+    .statValue {
+      font-size: 2rem; /* Further reduced for mobile */
+    }
+  
+    .statLabel {
+      font-size: 1rem; /* Further reduced for mobile */
+    }
+  
+    .statDescription {
+      font-size: 0.75rem; /* Further reduced for mobile */
+    }
+  }

@@ -38,6 +38,13 @@ import { CapabilitiesHeroBlock } from '@/blocks/CapabilitiesHeroBlock/config';
 import { StrategicBlock } from '@/blocks/StrategicBlock/config';
 import { TechnologyBlock } from '@/blocks/TechnologyBlock/config';
 
+// Add this import at the top with other block imports
+import { ShowcaseBlock } from '@/blocks/ShowcaseBlock/config';
+import { TestimonialBlock } from '@/blocks/TestimonialBlock/config'
+import { CaseStudyDetailsBlock } from '@/blocks/CaseStudyDetailsBlock/config'
+import { StatisticsBlock } from '@/blocks/StatisticsBlock/config'
+import { CaseStudyDetailsSecondBlock } from '@/blocks/CaseStudyDetailsSecondBlock/config'
+
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
   access: {
@@ -90,6 +97,7 @@ export const Pages: CollectionConfig<'pages'> = {
         {
           fields: [
             {
+              // Add ShowcaseBlock to the blocks array in the layout field
               name: 'layout',
               type: 'blocks',
               blocks: [
@@ -114,8 +122,13 @@ export const Pages: CollectionConfig<'pages'> = {
                 MaslowFooterBlock,
                 ArticleListBlock,
                 FeaturedArticleBlock,
+                StatisticsBlock,
                 ContactBlock,
-                TechnologyBlock, 
+                TestimonialBlock,
+                TechnologyBlock,
+                ShowcaseBlock,
+                CaseStudyDetailsBlock,
+                CaseStudyDetailsSecondBlock
               ],
               required: true,
               admin: {
